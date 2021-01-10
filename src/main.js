@@ -17,12 +17,22 @@ const storage = multer.diskStorage({
   });
 const upload = multer({ storage: storage });
 
+// Middleware service to make the uploads folder public
+app.use(express.static('uploads'));
+
 app.get("/", (req, res) => {
     res.sendStatus(200);
 });
 
 app.post("/file-upload", upload.single("file"), (req, res) => {
     // Read file information
+    const file = req.file;
+    const input = req.body;
+    res.sendStatus(200);
+});
+
+// API to allow multiple file upload
+app.post("/multi-upload", upload.array("file"), (req, res) => {
     const file = req.file;
     const input = req.body;
     res.sendStatus(200);
