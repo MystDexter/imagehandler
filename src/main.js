@@ -1,8 +1,18 @@
 const express = require('express');
 const app = express();
 
+const cors = require("cors");
+app.use(cors()); // allowing all users to make call
+
 const multer = require('multer');
 const path = require('path');
+const imageFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith("image")) {
+    cb(null, true);
+  } else {
+    cb("Please upload only images.", false);
+  }
+};
 // Make file names readable
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -15,7 +25,7 @@ const storage = multer.diskStorage({
       cb(null, Date.now() + '-' + file.originalname);
     }
   });
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storage, fileFilter: imageFilter });
 
 // Middleware service to make the uploads folder public
 app.use(express.static('uploads'));
@@ -40,7 +50,8 @@ app.post("/file-upload", upload.single("file"), async (req, res) => {
 
     await fileHandler.processSingleFile(file);
 
-    res.sendStatus(200);
+    // res.sendStatus(200);
+    res.json({ status: "ok" })
 });
 
 // API to allow multiple file upload
@@ -50,7 +61,8 @@ app.post("/multi-upload", upload.array("file"), async (req, res) => {
 
     await fileHandler.processMultiFile(fileList);
 
-    res.sendStatus(200);
+    // res.sendStatus(200);
+    res.json({ status: "ok" })
 });
 
 app.listen(3000);
