@@ -20,21 +20,36 @@ const upload = multer({ storage: storage });
 // Middleware service to make the uploads folder public
 app.use(express.static('uploads'));
 
+// local module
+const fileHandler = require('./fileHandler');
+
 app.get("/", (req, res) => {
     res.sendStatus(200);
 });
 
-app.post("/file-upload", upload.single("file"), (req, res) => {
+app.get("/file-list", async (req, res) => {
+  const results = await fileHandler.fileList();
+
+  res.json(results); 
+})
+
+app.post("/file-upload", upload.single("file"), async (req, res) => {
     // Read file information
     const file = req.file;
     const input = req.body;
+
+    await fileHandler.processSingleFile(file);
+
     res.sendStatus(200);
 });
 
 // API to allow multiple file upload
-app.post("/multi-upload", upload.array("file"), (req, res) => {
-    const file = req.file;
+app.post("/multi-upload", upload.array("file"), async (req, res) => {
+    const fileList = req.files;
     const input = req.body;
+
+    await fileHandler.processMultiFile(fileList);
+
     res.sendStatus(200);
 });
 
