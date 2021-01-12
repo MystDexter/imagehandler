@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
+const multer = require('multer');
+const fs = require("fs");
+const Unzipper = require("decompress-zip");
 
 const cors = require("cors");
 app.use(cors()); // allowing all users to make call
 
-const multer = require('multer');
 const path = require('path');
 const imageFilter = (req, file, cb) => {
   if (file.mimetype.startsWith("image")) {
@@ -26,6 +28,7 @@ const storage = multer.diskStorage({
     }
   });
 const upload = multer({ storage: storage, fileFilter: imageFilter });
+// const upload = multer({ storage: storage });
 
 // Middleware service to make the uploads folder public
 app.use(express.static('uploads'));
@@ -63,6 +66,22 @@ app.post("/multi-upload", upload.array("file"), async (req, res) => {
 
     // res.sendStatus(200);
     res.json({ status: "ok" })
+});
+
+app.post("/zip-upload", upload.single("file"), (req, res) => {
+  if (req.file){
+
+    var filepath = path.join(req.file.destination, req.file.filename);
+    var unzipper = new Unzipper(filepath);
+
+    unzipper.on("extract", function () {
+      console.log("Finished extracting");
+    });
+
+    unzipper.extract({ path: 'uploads'});
+  }
+
+  res.json({ status: filepath })
 });
 
 app.listen(3000);
