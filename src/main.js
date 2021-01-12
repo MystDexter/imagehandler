@@ -9,7 +9,7 @@ app.use(cors()); // allowing all users to make call
 
 const path = require('path');
 const imageFilter = (req, file, cb) => {
-  if (file.mimetype.startsWith("image")) {
+  if (file.mimetype.startsWith('image') || file.mimetype.startsWith('application/zip')) {
     cb(null, true);
   } else {
     cb("Please upload only images.", false);
@@ -28,7 +28,6 @@ const storage = multer.diskStorage({
     }
   });
 const upload = multer({ storage: storage, fileFilter: imageFilter });
-// const upload = multer({ storage: storage });
 
 // Middleware service to make the uploads folder public
 app.use(express.static('uploads'));
@@ -76,12 +75,16 @@ app.post("/zip-upload", upload.single("file"), (req, res) => {
 
     unzipper.on("extract", function () {
       console.log("Finished extracting");
+      fs.unlink(filepath, function (e) {
+        if (e) throw e;
+        console.log('successfully deleted '+filepath);
+      });
     });
 
     unzipper.extract({ path: 'uploads'});
   }
 
-  res.json({ status: filepath })
+  res.json({ status: "ok" })
 });
 
 app.listen(3000);
