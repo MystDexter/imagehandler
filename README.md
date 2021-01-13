@@ -13,7 +13,8 @@ From the project root
 
 - Open src/main.js. file. If you're on Visual Studio Code, run and debug in node.js environment.
 
-- Enter localhost:3000 on browser. Output should be "OK" if all is well
+- Enter http://localhost:3000 on your browser. Output should be "OK" if all is well. You should also be able see .bin/n/bin/node ./src/main.js in your debug console
+
 
 Angular will be the web client
 
