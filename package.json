@@ -1,0 +1,30 @@
+{
+  "name": "imagehandler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "decompress-zip": "^0.3.3",
+    "cors": "^2.8.5",
+    "express-handlebars": "^5.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.11",
+    "multer": "^1.4.2",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MystDexter/imagehandler.git"
+  },
+  "author": "Edidiong Bassey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MystDexter/imagehandler/issues"
+  },
+  "homepage": "https://github.com/MystDexter/imagehandler#readme"
+}
