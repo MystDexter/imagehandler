@@ -40,6 +40,6 @@ API | Method | Description
 
 
 
-### N/B
+### side note:
 `A potentially leaner, simpler and more lightweight solution for implementing this would be using Handlebars (https://handlebarsjs.com/) to generate the views on the frontend instead of Angular, as well as mongodb for the database. This way we don't run a separate application to serve up our images in the browser. I'll be implementing this as personal learning in my spare time.`
 
