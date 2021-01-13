@@ -35,8 +35,9 @@ API | Method | Description
 `zip-upload` | POST | Allows upload and extraction of files from compressed zip file
 `file-list` | GET | Gets all uploaded image files
 
-Use POSTMAN to test the REST API
+`Use POSTMAN to test the REST API`
 
-# N/B
+
+### N/B
 `A potentially leaner, simpler and more lightweight solution for implementing this would be using Handlebars (https://handlebarsjs.com/) to generate the views on the frontend instead of Angular, as well as mongodb for the database. This way we don't run a separate application to serve up our images in the browser. I'll be implementing this as personal learning in my spare time.`
 
