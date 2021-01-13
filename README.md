@@ -28,10 +28,10 @@ Angular will be the web client
 - After compile, go to http://localhost:4200 on your browser
 
 ## API
-API | Description | Note
+API | Method | Description
 --- | --- | ---
-`file-upload` | uploads a single image file |
-`multi-upload` | Allows multiple image file upload |
-`zip-upload` | Allows upload and extraction of files from compressed zip file |
-`file-list` | Gets all uploaded image files |
+`file-upload` | POST | uploads a single image file
+`multi-upload` | POST | Allows multiple image file upload
+`zip-upload` | POST | Allows upload and extraction of files from compressed zip file
+`file-list` | GET | Gets all uploaded image files
 
