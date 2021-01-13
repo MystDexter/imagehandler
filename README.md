@@ -32,6 +32,6 @@ API | Description | Note
 --- | --- | ---
 `file-upload` | uploads a single image file |
 `multi-upload` | Allows multiple image file upload |
-`zip-upload` | Allows upload and unarchiving of zip files |
+`zip-upload` | Allows upload and extraction of files from compressed zip file |
 `file-list` | Gets all uploaded image files |
 
