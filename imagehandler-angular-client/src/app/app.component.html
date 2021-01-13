@@ -1,0 +1,13 @@
+<div>
+  <img [src]="imgSrc" alt="" />
+</div>
+<div class="uploader">
+  <input type="file" name="" id="" (change)="processUpload($event)" />
+</div>
+
+<div class="image-container">
+  <div *ngFor="let item of imageList" class="image-display">
+    <img [src]="baseUrl + item.filename" class="large" alt="" />
+    <img [src]="baseUrl + item.filename" class="small" alt="" />
+  </div>
+</div>

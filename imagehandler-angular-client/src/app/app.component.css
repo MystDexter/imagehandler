@@ -1,0 +1,35 @@
+
+.uploader {
+    margin: 7.5px
+}
+
+.image-container {
+    display: -webkit-inline-box;
+    flex-wrap: wrap;
+}
+
+.image-display {
+    display: flex;
+    /* margin: 7.5px; */
+}
+
+/* Set max image height and width while maintaining the aspect ratio */
+img.large {
+    display: block;
+    margin: 7.5px;
+    max-width:64px;
+    max-height:64px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+img.small {
+    display: block;
+    margin: 7.5px;
+    max-width:32px;
+    max-height:32px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
