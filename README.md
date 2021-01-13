@@ -5,7 +5,7 @@ What I have built is quite barebones and doesn't exactly fulfil all enhancements
 
 ## What you will need
 
-Express will be the server on which the app will run on Port 3000
+The REST API is developed with Express.js and served on Port 3000, and 
 
 ### To run express server:
 From the project root
@@ -16,7 +16,7 @@ From the project root
 - Enter http://localhost:3000 on your browser. Output should be "OK" if all is well. You should also be able see .bin/n/bin/node ./src/main.js in your debug console
 
 
-Angular will be the web client
+The web client is developed built with Angular
 
 ### To run the web client
 - in terminal run cd imagehandler-angular-client
@@ -34,4 +34,6 @@ API | Method | Description
 `multi-upload` | POST | Allows multiple image file upload
 `zip-upload` | POST | Allows upload and extraction of files from compressed zip file
 `file-list` | GET | Gets all uploaded image files
+
+Use POSTMAN to test the REST API
 
