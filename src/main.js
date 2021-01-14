@@ -22,10 +22,9 @@ const storage = multer.diskStorage({
       cb(null, path.join(__dirname,'./public/uploads'))
     },
     filename: function (req, file, cb) {
-      // const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-
-      // Use timestamp to keep image names unique and allow for same image uploads
-      cb(null, Date.now() + '-' + file.originalname);
+      // Use timestamp to keep image names unique and allow for same image uploads + 
+      // Return the extension of the path, from the last '.' to end of string in the last portion of the path.
+      cb(null, Date.now() + '-' + path.extname(file.originalname));
     }
   });
 const upload = multer({ storage: storage, fileFilter: imageFilter });
