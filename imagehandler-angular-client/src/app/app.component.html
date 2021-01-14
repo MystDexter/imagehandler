@@ -2,7 +2,7 @@
   <img [src]="imgSrc" alt="" />
 </div>
 <div class="uploader">
-  <input type="file" name="" id="" (change)="processUpload($event)" accept="image/*" />
+  <input type="file" name="" id="" accept="image/*" (change)="processUpload($event)" multiple />
 </div>
 
 <div class="image-container">

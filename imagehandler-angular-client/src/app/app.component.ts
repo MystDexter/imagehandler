@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
 
   async processUpload(event) {
     console.log(event, event.target.files);
-    const file = event.target.files[0];
+    const files = event.target.files;
 
     /*const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -31,13 +31,18 @@ export class AppComponent implements OnInit {
     };*/
 
     // ajax call
-    const url = 'http://localhost:3000/file-upload';
-    const formData = new FormData();
-    formData.append('file', file);
+    for (var i = 0; i < files.length; i++) {
+      var file = files[i];
+      const url = 'http://localhost:3000/multi-upload';
+      const formData = new FormData();
+      formData.append('file', file);
 
-    await this.http.post(url, formData).toPromise();
+      await this.http.post(url, formData).toPromise();
 
-    this.readAllImages();
+      this.readAllImages();
+    }
+
+    console.log("UPLOADED");
   }
 
   async readAllImages() {
