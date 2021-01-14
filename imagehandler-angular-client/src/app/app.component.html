@@ -7,7 +7,7 @@
 
 <div class="image-container">
   <div *ngFor="let item of imageList" class="image-display">
-    <img [src]="baseUrl + item.filename" class="large" alt="" />
-    <img [src]="baseUrl + item.filename" class="small" alt="" />
+    <img [src]="baseUrl + subPath + item.filename" class="thumbnail-large" alt="" />
+    <img [src]="baseUrl + subPath + item.filename" class="thumbnail-small" alt="" />
   </div>
 </div>

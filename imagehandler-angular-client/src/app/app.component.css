@@ -14,7 +14,7 @@
 }
 
 /* Set max image height and width while maintaining the aspect ratio */
-img.large {
+img.thumbnail-large {
     display: block;
     margin: 7.5px;
     max-width:64px;
@@ -24,7 +24,7 @@ img.large {
     object-fit: contain;
 }
 
-img.small {
+img.thumbnail-small {
     display: block;
     margin: 7.5px;
     max-width:32px;

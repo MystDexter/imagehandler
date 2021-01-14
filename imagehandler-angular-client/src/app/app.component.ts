@@ -10,6 +10,7 @@ export class AppComponent implements OnInit {
   title = 'angular-client-file-upload';
 
   baseUrl = 'http://localhost:3000/';
+  subPath = 'uploads/';
   imgSrc: any = '';
   imageList: any = [];
 

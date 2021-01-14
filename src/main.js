@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const multer = require('multer');
+const port = 3000;
 const fs = require("fs");
 const Unzipper = require("decompress-zip");
 
@@ -18,7 +19,7 @@ const imageFilter = (req, file, cb) => {
 // Make file names readable
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, path.join(__dirname,'uploads'))
+      cb(null, path.join(__dirname,'./public/uploads'))
     },
     filename: function (req, file, cb) {
       // const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
@@ -29,10 +30,10 @@ const storage = multer.diskStorage({
   });
 const upload = multer({ storage: storage, fileFilter: imageFilter });
 
-// Middleware service to make the uploads folder public
-app.use(express.static('uploads'));
+// Define the static file path
+app.use(express.static(__dirname+'/public'));
 
-// local module
+// local model
 const fileHandler = require('./fileHandler');
 
 app.get("/", (req, res) => {
@@ -41,9 +42,8 @@ app.get("/", (req, res) => {
 
 app.get("/file-list", async (req, res) => {
   const results = await fileHandler.fileList();
-
-  res.json(results); 
-})
+  res.json(results);
+});
 
 app.post("/file-upload", upload.single("file"), async (req, res) => {
     // Read file information
@@ -87,4 +87,4 @@ app.post("/zip-upload", upload.single("file"), (req, res) => {
   res.json({ status: "ok" })
 });
 
-app.listen(3000);
+app.listen(port, () => console.log('The server running on Port '+port));
