@@ -27,6 +27,9 @@ The web client is developed built with Angular
 
 - After compile, go to http://localhost:4200 on your browser
 
+### Database
+- MySql
+
 ## API
 API | Method | Description
 --- | --- | ---
@@ -39,6 +42,10 @@ API | Method | Description
 
 ## Sample
 ![alt text](https://github.com/MystDexter/imagehandler/blob/main/sample_screenshot.png?raw=true)
+
+## What doesn't work
+1. Zip upload and decompression from the browser. However the API works and can be tested with an API testing tool e.g postman
+2. Tests
 
 ### side note:
 `A potentially leaner, simpler and more lightweight solution for implementing this would be using Handlebars (https://handlebarsjs.com/) to generate the views on the frontend instead of Angular, as well as mongodb for the database. This way we don't run a separate application to serve up our images in the browser. I'll be implementing this as personal learning in my spare time.`
